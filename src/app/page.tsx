@@ -13,6 +13,7 @@ export default function Home() {
         </nav>
         <div className="mt-40">
           <div className="flex flex-col justify-center items-center gap-4">
+            <h1>Internal tools hub (BETA)</h1>
             <Link href={scheduler}>
               <Button>Schedules</Button>
             </Link>
