@@ -4,6 +4,7 @@ import Navbar from "@/components/navbar";
 import Link from "next/link";
 export default function Home() {
   let scheduler = "/scheduler";
+  let upload = "/upload";
   return (
     <>
       <div className="mt-5">
@@ -15,7 +16,9 @@ export default function Home() {
             <Link href={scheduler}>
               <Button>Schedules</Button>
             </Link>
-            <Button>Uploads of the day</Button>
+            <Link href={upload}>
+              <Button>Uploads of the day</Button>
+            </Link>
             <Button>History</Button>
           </div>
         </div>
