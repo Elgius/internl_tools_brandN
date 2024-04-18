@@ -1,10 +1,22 @@
 "use client";
 import React from "react";
 import { useEffect, useState } from "react";
-import { Button } from "@/components/ui/button";
+// Later use
+// import { Button } from "@/components/ui/button";
+
+interface Scheduler {
+  Id: number;
+  Client: string;
+  Sunday: boolean;
+  Monday: boolean;
+  Tuesday: boolean;
+  Wednesday: boolean;
+  Thursday: boolean;
+  Saturday: boolean;
+}
 
 const Page = () => {
-  const [schedule, setScheduleData] = useState([]);
+  const [schedule, setScheduleData] = useState<Scheduler[] | null>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -45,9 +57,11 @@ const Page = () => {
     return weekday[d.getDay()];
   };
 
-  const filterSchedule = schedule.filter(
-    (scheduler) => scheduler[getToday()] === true
-  );
+  const filterSchedule = schedule
+    ? schedule.filter(
+        (scheduler) => scheduler[getToday() as keyof Scheduler] === true
+      )
+    : [];
 
   if (loading) {
     return (

@@ -12,8 +12,19 @@ import {
   TableRow,
 } from "@/components/ui/table";
 
+interface Scheduler {
+  Id: number;
+  Client: string;
+  Sunday: boolean;
+  Monday: boolean;
+  Tuesday: boolean;
+  Wednesday: boolean;
+  Thursday: boolean;
+  Saturday: boolean;
+}
+
 const Page = () => {
-  const [scheduleData, setScheduleData] = useState(null);
+  const [scheduleData, setScheduleData] = useState<Scheduler[] | null>(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
