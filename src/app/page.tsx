@@ -2,6 +2,20 @@ import React from "react";
 import { Button } from "@/components/ui/button";
 import Navbar from "@/components/navbar";
 import Link from "next/link";
+
+// remove this once all functionalities are working
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "@/components/ui/alert-dialog";
+
 export default function Home() {
   let scheduler = "/scheduler";
   let upload = "/upload";
@@ -20,7 +34,27 @@ export default function Home() {
             <Link href={upload}>
               <Button>Uploads of the day</Button>
             </Link>
-            <Button>History</Button>
+            <>
+              <AlertDialog>
+                <AlertDialogTrigger asChild>
+                  <Button>History</Button>
+                </AlertDialogTrigger>
+                <AlertDialogContent>
+                  <AlertDialogHeader>
+                    <AlertDialogTitle>
+                      This funtionaliy is not ready!
+                    </AlertDialogTitle>
+                    <AlertDialogDescription>
+                      This functionality is not ready for use right now, please
+                      wait till we done 🥺
+                    </AlertDialogDescription>
+                  </AlertDialogHeader>
+                  <AlertDialogFooter>
+                    <AlertDialogCancel>Go Back</AlertDialogCancel>
+                  </AlertDialogFooter>
+                </AlertDialogContent>
+              </AlertDialog>
+            </>
           </div>
         </div>
       </div>
