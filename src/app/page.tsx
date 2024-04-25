@@ -19,6 +19,7 @@ import {
 export default function Home() {
   let scheduler = "/scheduler";
   let upload = "/upload";
+  let main = "https://brand-n-main-site.vercel.app/";
   return (
     <>
       <div className="mt-5">
@@ -34,6 +35,10 @@ export default function Home() {
             <Link href={upload}>
               <Button>Uploads of the day</Button>
             </Link>
+            <Link href={main}>
+              <Button>Main website</Button>
+            </Link>
+
             <>
               <AlertDialog>
                 <AlertDialogTrigger asChild>
