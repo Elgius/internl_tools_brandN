@@ -42,7 +42,28 @@ export default function Home() {
             <>
               <AlertDialog>
                 <AlertDialogTrigger asChild>
-                  <Button>History</Button>
+                  <Button className="bg-gray-600">Attendance</Button>
+                </AlertDialogTrigger>
+                <AlertDialogContent>
+                  <AlertDialogHeader>
+                    <AlertDialogTitle>
+                      This funtionaliy is not ready!
+                    </AlertDialogTitle>
+                    <AlertDialogDescription>
+                      This functionality is not ready for use right now, please
+                      wait till we done 🥺
+                    </AlertDialogDescription>
+                  </AlertDialogHeader>
+                  <AlertDialogFooter>
+                    <AlertDialogCancel>Go Back</AlertDialogCancel>
+                  </AlertDialogFooter>
+                </AlertDialogContent>
+              </AlertDialog>
+            </>
+            <>
+              <AlertDialog>
+                <AlertDialogTrigger asChild>
+                  <Button className="bg-gray-600">Salary</Button>
                 </AlertDialogTrigger>
                 <AlertDialogContent>
                   <AlertDialogHeader>
