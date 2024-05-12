@@ -12,6 +12,12 @@ import {
   TableRow,
 } from "@/components/ui/table";
 
+interface salaryItem {
+  id: number;
+  dates: string;
+  signed_in: boolean | null;
+}
+
 export default function Salary() {
   const [setLoading, setIsLoading] = useState(true);
   const [listing, setListing] = useState([]);
@@ -83,7 +89,7 @@ export default function Salary() {
               <TableBody>
                 {listing &&
                   listing.length > 0 &&
-                  listing.map((item, index) => (
+                  listing.map((item: salaryItem, index: number) => (
                     <TableRow key={index}>
                       <TableCell>{item.id}</TableCell>
                       <TableCell>{item.dates}</TableCell>
