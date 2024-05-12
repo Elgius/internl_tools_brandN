@@ -13,7 +13,7 @@ export async function GET() {
       return NextResponse.json({ error: error.message }, { status: 500 });
     }
 
-    return NextResponse.json({ Salary }, { status: 200 });
+    return new Response(JSON.stringify({ Salary }), { status: 200 });
   } else {
     console.error(
       "Client initialization error, API routes shutting down, call tech support"

@@ -2,6 +2,15 @@
 // import { supabaseClient } from "@/db/supabaseClient";
 import { useEffect, useState } from "react";
 import "./hamster.modules.css";
+import {
+  Table,
+  TableBody,
+  TableCaption,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
 
 export default function Salary() {
   const [setLoading, setIsLoading] = useState(true);
@@ -14,7 +23,11 @@ export default function Salary() {
       const data = await response.json();
       console.log(`this is the data: ${JSON.stringify(data, null, 2)}`);
       setIsLoading(false);
-      setListing(data.response);
+
+      console.log(data);
+      console.log(typeof data);
+
+      setListing(data.Salary);
     };
     fetchData();
   }, []);
@@ -54,11 +67,44 @@ export default function Salary() {
 
   return (
     <>
-      <div>
-        <div className="text-center">
-          <h1>Hello world</h1>
+      <div className="flex item-center justify-center overflow-hidden min-h-screen">
+        <div className="flex-col space-y-3">
+          <h1>Employee: Elgius</h1>
+          <div>
+            <Table>
+              <TableCaption>Salary calculation</TableCaption>
+              <TableHeader>
+                <TableRow>
+                  <TableHead className="w-[100px]">id</TableHead>
+                  <TableHead>Date</TableHead>
+                  <TableHead className="text-right">Signed in</TableHead>
+                </TableRow>
+              </TableHeader>
+              <TableBody>
+                {listing &&
+                  listing.length > 0 &&
+                  listing.map((item, index) => (
+                    <TableRow key={index}>
+                      <TableCell>{item.id}</TableCell>
+                      <TableCell>{item.dates}</TableCell>
+                      <TableCell className="text-right">
+                        {item.signed_in === true ? <>yes</> : <div>no</div>}
+                      </TableCell>
+                    </TableRow>
+                  ))}
+              </TableBody>
+            </Table>
+          </div>
         </div>
       </div>
     </>
   );
+}
+
+{
+  /* 
+  1 - get the attendance thing out [x]
+  2 - Salary calculation algorithm []
+  3 - get sign in to work cohesively with this []  
+  */
 }

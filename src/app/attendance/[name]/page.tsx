@@ -14,30 +14,32 @@ function Data({ params }: { params: { name: string } }) {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const { data: record, error } = await supabaseClient
-          .from("Sample")
-          .select("*")
-          .eq("date", currentDate);
-
-        if (error) {
-          console.error("Error fetching record: ", error);
-          return;
-        }
-
-        if (!record || record.length === 0) {
-          const { error: insertError } = await supabaseClient
+        if (typeof supabaseClient !== "undefined") {
+          const { data: record, error } = await supabaseClient
             .from("Sample")
-            .insert([{ date: currentDate }])
-            .single();
+            .select("*")
+            .eq("date", currentDate);
 
-          if (insertError) {
-            console.error("Error inserting the record", insertError);
+          if (error) {
+            console.error("Error fetching record: ", error);
             return;
           }
 
-          console.log('Record inserted and "date" column updated.');
-        } else {
-          console.log("Record already exists.");
+          if (!record || record.length === 0) {
+            const { error: insertError } = await supabaseClient
+              .from("Sample")
+              .insert([{ date: currentDate }])
+              .single();
+
+            if (insertError) {
+              console.error("Error inserting the record", insertError);
+              return;
+            }
+
+            console.log('Record inserted and "date" column updated.');
+          } else {
+            console.log("Record already exists.");
+          }
         }
       } catch (error) {
         console.error("An unexpected error occurred:", error);
