@@ -35,7 +35,7 @@ function Data({ params }: { params: { name: string } }) {
             return;
           }
 
-          console.log('Record inserted and "data" column updated.');
+          console.log('Record inserted and "date" column updated.');
         } else {
           console.log("Record already exists.");
         }
