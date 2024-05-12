@@ -61,7 +61,9 @@ export default function Home() {
               </AlertDialog>
             </>
             <>
-              <Button className="bg-gray-600">Salary</Button>
+              <Link href="/salary">
+                <Button className="bg-gray-600">Salary</Button>
+              </Link>
             </>
           </div>
         </div>
