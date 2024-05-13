@@ -62,7 +62,7 @@ export default function Home() {
             </>
             <>
               <Link href="/salary">
-                <Button className="bg-gray-600">Salary</Button>
+                <Button>Salary</Button>
               </Link>
             </>
           </div>

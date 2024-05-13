@@ -7,10 +7,13 @@ import {
   TableBody,
   TableCaption,
   TableCell,
+  TableFooter,
   TableHead,
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import { processData } from "@/lib/processData";
+import { fetchSalary } from "@/lib/fetchData";
 
 interface salaryItem {
   id: number;
@@ -21,6 +24,10 @@ interface salaryItem {
 export default function Salary() {
   const [setLoading, setIsLoading] = useState(true);
   const [listing, setListing] = useState([]);
+  const [statistics, setStatistics] = useState({
+    falseSignInCount: 0,
+    totalAmount: 0,
+  });
 
   useEffect(() => {
     const fetchData = async () => {
@@ -36,6 +43,15 @@ export default function Salary() {
       setListing(data.Salary);
     };
     fetchData();
+  }, []);
+
+  useEffect(() => {
+    const getDataAndProcess = async () => {
+      const salaryData = await fetchSalary();
+      const processedData = processData(salaryData);
+      setStatistics(processedData);
+    };
+    getDataAndProcess();
   }, []);
 
   if (setLoading) {
@@ -99,6 +115,10 @@ export default function Salary() {
                     </TableRow>
                   ))}
               </TableBody>
+              <TableFooter>
+                days absent: {statistics.falseSignInCount}
+                Total salary: {statistics.totalAmount}
+              </TableFooter>
             </Table>
           </div>
         </div>
