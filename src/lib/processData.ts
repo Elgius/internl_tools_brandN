@@ -15,9 +15,8 @@ export function processData(salaryData: { signed_in: any }[]) {
   });
 
   const remaing_days = monthsDaysRemaining - falseSignInCount;
-  console.log(`remaining days ${remaing_days}`);
   const totalAmount = remaing_days * 112.9;
-  return { falseSignInCount, totalAmount, remaing_days };
+  return { falseSignInCount, totalAmount };
 }
 
 // add salary split function

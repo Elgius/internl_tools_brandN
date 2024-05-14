@@ -27,7 +27,6 @@ export default function Salary() {
   const [statistics, setStatistics] = useState({
     falseSignInCount: 0,
     totalAmount: 0,
-    remaing_days: 0,
   });
 
   useEffect(() => {
@@ -116,11 +115,10 @@ export default function Salary() {
                     </TableRow>
                   ))}
               </TableBody>
-              {/* Math not addining here */}
+              {/* Math not adding here */}
+              <TableFooter>Total salary: {statistics.totalAmount}</TableFooter>
               <TableFooter>
-                Total salary: {statistics.totalAmount}, days remaining in the
-                month: {statistics.remaing_days}, days absent:{" "}
-                {statistics.falseSignInCount}
+                days absent: {statistics.falseSignInCount}
               </TableFooter>
             </Table>
           </div>
@@ -134,9 +132,7 @@ export default function Salary() {
   /* 
   1 - get the attendance thing out [x]
   2 - Salary calculation algorithm [x]
-  3 - add the following fields:
-      a) Remaining days in the month []
-  4 - get sign in to work cohesively with this []  
+  3 - get sign in to work cohesively with this []  
   */
 }
 
