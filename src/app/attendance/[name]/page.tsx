@@ -2,53 +2,30 @@
 
 import { useEffect, useState } from "react";
 import "./hamster.modules.css";
-import { supabaseClient } from "@/db/supabaseClient";
 import { Button } from "@/components/ui/button";
+import { updater } from "@/db/upload";
 
 const currentDate = new Date().toISOString().split("T")[0];
 
 function Data({ params }: { params: { name: string } }) {
   // loader run to allow the site to check with the main server if todays date has been registered
   const [isLoading, setIsLoading] = useState(false);
+  const [notification, setNotificatation] = useState("");
 
-  const handleSubmit = async (event: { preventDefault: () => void }) => {
-    event.preventDefault();
+  useEffect(() => {
+    if (notification) {
+      alert(notification);
+      setNotificatation("");
+    }
+  }, [notification]);
 
-    const day = new Date();
-
-    const todaysDate = day.toDateString();
-
-    var hours = day.getHours();
-    var minutes = day.getMinutes();
-
-    let todaysTime = hours + ":" + minutes;
-
-    console.log(`this is the date ${todaysDate}`);
-
-    if (typeof supabaseClient !== "undefined") {
-      try {
-        const response = await fetch("/api/update", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            dates: todaysDate,
-            timeStamp: todaysTime,
-          }),
-        });
-
-        if (!response.ok) {
-          throw new Error("Check Network");
-        }
-
-        const data = await response.json();
-        console.log(data);
-        console.log("Supabase contact successful");
-        // setIsLoading(false);
-      } catch (error) {
-        console.error("THere has been an error at the fetch operation", error);
-      }
+  const handleSignInClick = async () => {
+    try {
+      await updater();
+      setNotificatation("table has been updated");
+    } catch (error) {
+      console.error(error);
+      setNotificatation("Failed to update the table");
     }
   };
 
@@ -89,7 +66,7 @@ function Data({ params }: { params: { name: string } }) {
     <div className="text-center">
       <h1>Hello this is {params.name} </h1>
       <div className="flex items-center justify-center my-10">
-        <Button onClick={handleSubmit}>Sign in</Button>
+        <Button onClick={handleSignInClick}>Sign in</Button>
       </div>
     </div>
   );
