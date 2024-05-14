@@ -40,25 +40,9 @@ export default function Home() {
             </Link>
 
             <>
-              <AlertDialog>
-                <AlertDialogTrigger asChild>
-                  <Button className="bg-gray-600">Attendance</Button>
-                </AlertDialogTrigger>
-                <AlertDialogContent>
-                  <AlertDialogHeader>
-                    <AlertDialogTitle>
-                      This funtionaliy is not ready!
-                    </AlertDialogTitle>
-                    <AlertDialogDescription>
-                      This functionality is not ready for use right now, please
-                      wait till we done 🥺
-                    </AlertDialogDescription>
-                  </AlertDialogHeader>
-                  <AlertDialogFooter>
-                    <AlertDialogCancel>Go Back</AlertDialogCancel>
-                  </AlertDialogFooter>
-                </AlertDialogContent>
-              </AlertDialog>
+              <Link href="/attendance">
+                <Button>Attendance</Button>
+              </Link>
             </>
             <>
               <Link href="/salary">

@@ -1,4 +1,3 @@
 work remianing:
 
--> processData.ts
--> salary/page.tsx
+clean up the mess make a nice UI
