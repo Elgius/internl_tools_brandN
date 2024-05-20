@@ -36,10 +36,6 @@ export default function Salary() {
       const data = await response.json();
       console.log(`this is the data: ${JSON.stringify(data, null, 2)}`);
       setIsLoading(false);
-
-      // console.log(data);
-      // console.log(typeof data);
-
       setListing(data.Salary);
     };
     fetchData();
