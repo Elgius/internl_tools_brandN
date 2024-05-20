@@ -8,11 +8,11 @@ import Link from "next/link";
 const menuItems = [
   {
     name: "Home",
-    href: "#",
+    href: "/",
   },
   {
     name: "Schedule",
-    href: "#",
+    href: "/scheduler",
   },
 ];
 
@@ -33,15 +33,14 @@ export default function ExampleNavbarThree() {
           <ul className="ml-12 inline-flex space-x-8">
             {menuItems.map((item) => (
               <li key={item.name}>
-                <a
-                  href={item.href}
-                  className="inline-flex items-center text-sm font-semibold text-gray-800 hover:text-gray-900"
-                >
-                  {item.name}
-                  <span>
+                <Link href={item.href}>
+                  <Button className="inline-flex items-center text-sm font-semibold bg-white text-gray-800 hover:text-gray-900 hover:bg-gray-300">
+                    {item.name}
+                    {/* <span>
                     <ChevronDown className="ml-2 h-4 w-4" />
-                  </span>
-                </a>
+                  </span> */}
+                  </Button>
+                </Link>
               </li>
             ))}
           </ul>
@@ -98,7 +97,7 @@ export default function ExampleNavbarThree() {
                 </div>
                 <div className="mt-2 space-y-2">
                   <Link href="/login">
-                    <Button className="w-full rounded-md border border-black px-3 py-2 text-sm font-semibold text-black shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black">
+                    <Button className="w-full rounded-md border border-black px-3 py-2 text-sm font-semibold text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white">
                       Sign In
                     </Button>
                   </Link>
