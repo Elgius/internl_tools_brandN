@@ -7,7 +7,7 @@ export async function GET() {
   if (typeof supabaseClient !== "undefined") {
     const { data: Salary, error } = await supabaseClient
       .from("may")
-      .select("*")
+      .select("")
       .order("id", { ascending: true });
 
     if (error) {
