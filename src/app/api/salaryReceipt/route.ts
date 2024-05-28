@@ -1,9 +1,10 @@
+import { unstable_noStore as noStore } from "next/cache";
 import { supabaseClient } from "@/db/supabaseClient";
 import { NextResponse } from "next/server";
 
 export async function GET() {
   console.log("API calls being logged");
-
+  noStore();
   if (typeof supabaseClient !== "undefined") {
     const { data: Salary, error } = await supabaseClient
       .from("may")
